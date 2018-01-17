@@ -10,6 +10,8 @@ output:
 
 ## Creates a title
 
+<img src="Lindsey.jpg" width="200" height="200" />
+
 **bold**
 *italics*
 
