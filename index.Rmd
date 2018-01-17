@@ -2,7 +2,10 @@
 title: "Bio 381 Webpage"
 author: "Lindsey Pett"
 date: "1/17/2018"
-output: html_document
+output: 
+  prettydoc::html_pretty:
+    theme: HPSTR
+    highlight: github
 ---
 
 ## Creates a title
@@ -10,3 +13,6 @@ output: html_document
 **bold**
 *italics*
 
+* item 1
+* item 2
+* item 3
