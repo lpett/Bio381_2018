@@ -1,17 +1,102 @@
 ---
 title: "Bio 381 Webpage"
 author: "Lindsey Pett"
-date: "1/17/2018"
+date: "Spring 2018"
 output: 
   prettydoc::html_pretty:
     theme: HPSTR
     highlight: github
 ---
 
-## Bio 381 Lindsey Pett
+## Bio 381
 
 
 <img src="Lindsey.jpg" width="200" height="200" />
 
+**Lindsey Pett**
+lpett@uvm.edu
 
-About Me: I am a first year PhD candidate in the Gotelli lab.  My research is on nutrient stoichiometry in northern pitcher plants. 
+
+About Me: I am a first year PhD candidate in the Gotelli lab.  My current research is on nutrient stoichiometry in northern pitcher plants.  Research intrests include wetland ecology, community ecology, and aquatic entomology. 
+
+
+## Helpful Links   
+* [Course Webpage](https://gotellilab.github.io/Bio381/)   
+* [RMarkdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)   
+* [Github website templates](https://github.com/jekyll/jekyll/wiki/Themes)   
+* [R help](http://stackoverflow.com/questions/tagged/r)  
+
+
+## Homework Solutions and Notes
+
+------
+<div id='id-section1'/>
+### Week 1: Setting up a webpage 
+[Assignment Page](https://gotellilab.github.io/Bio381/Homeworks/Homework01.html)   
+   
+Due:   
+1. A fun fact about yourself   
+2. Your github homepage   
+3. Your BIO 381 webpage    
+   
+No solution   
+
+------
+<div id='id-section2'/>
+### Week 2:    
+
+   
+ 
+
+------
+<div id='id-section3'/>
+### Week 3: 
+
+
+       
+
+
+
+------
+<div id='id-section4'/>
+### Week 4:    
+
+
+      
+
+------
+<div id='id-section5'/>   
+### Week 5: 
+  
+   
+ 
+------
+<div id='id-section6'/>   
+### Week 6: 
+
+------
+<div id='id-section7'/>
+### Week 7: 
+
+
+------
+<div id='id-section8'/>
+### Week 8:  
+
+ 
+   
+
+------
+<div id='id-section9'/>
+### Week 9: 
+
+ 
+
+------
+<div id='id-section10'/>
+### Week 10:    
+
+
+------
+<div id='id-section11'/>
+### Week 11: 
