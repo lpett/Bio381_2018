@@ -8,13 +8,10 @@ output:
     highlight: github
 ---
 
-## Creates a title
+## Bio 381 Lindsey Pett
+
 
 <img src="Lindsey.jpg" width="200" height="200" />
 
-**bold**
-*italics*
 
-* item 1
-* item 2
-* item 3
+About Me: I am a first year PhD candidate in the Gotelli lab.  My research is on nutrient stoichiometry in northern pitcher plants. 
