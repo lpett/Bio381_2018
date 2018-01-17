@@ -1,0 +1,12 @@
+---
+title: "Bio 381 Webpage"
+author: "Lindsey Pett"
+date: "1/17/2018"
+output: html_document
+---
+
+## Creates a title
+
+*bold*
+**italics**
+
