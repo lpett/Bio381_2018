@@ -18,7 +18,7 @@ lpett@uvm.edu
 
 
 About Me: I am a first year PhD candidate in the Gotelli lab.  My current research is on nutrient stoichiometry in northern pitcher plants.  Research intrests include wetland ecology, community ecology, and aquatic entomology. 
-[test](FirstTypora.html)
+
 
 ## Helpful Links   
 * [Course Webpage](https://gotellilab.github.io/Bio381/)   
