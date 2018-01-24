@@ -1,0 +1,10 @@
+---
+title: "Homework2"
+author: "Lindsey Pett"
+date: "1/24/2018"
+output: html_document
+---
+Early Graph
+![](EarlyGraph.jpg)
+Logic Tree
+![](LogicTree.png)
