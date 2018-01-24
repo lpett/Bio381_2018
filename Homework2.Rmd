@@ -4,7 +4,11 @@ author: "Lindsey Pett"
 date: "1/24/2018"
 output: html_document
 ---
-Early Graph
+**Early Graph**
+
+
 ![](EarlyGraph.jpg)
-Logic Tree
-![](LogicTree.png)
+**Logic Tree**
+
+
+![](LogicTree2.png)
