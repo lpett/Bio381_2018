@@ -10,8 +10,8 @@ output:
 
 ## Bio 381
 
-
 <img src="Lindsey.jpg" width="200" height="200" />
+
 
 **Lindsey Pett**
 lpett@uvm.edu
@@ -44,16 +44,15 @@ No solution
 ------
 <div id='id-section2'/>
 ### Week 2:    
-[Homework 2 Link](Homework2.html)
+[Homework 2](Homework2.html)
  
 
 ------
 <div id='id-section3'/>
 ### Week 3: 
+[Homework 3](Homework_3.pdf)
 
-
-       
-
+      
 
 
 ------

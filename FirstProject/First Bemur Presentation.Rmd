@@ -1,0 +1,48 @@
+---
+title: "First Slides"
+author: "Lindsey Pett"
+date: "1/30/2018"
+output: 
+  beamer_presentation: 
+    colortheme: beaver
+    incremental: yes
+    theme: Madrid
+---
+## Slide Title
+
+Add your markdown text, etc. etc. for display on the screen, but remener, these are **slides** so we dont want too much text!
+
+## second slide
+
+- First incremental bullet point
+- Second incremental bullet point
+- Third incremental bullet point
+
+## third slide
+>- first simultaneous bullet point
+>- second simultaneous bullet point
+>- third simultaneous bullet point
+
+## Lets see some R
+
+```{r,echo=FALSE}
+library(ggplot2)
+var1<-runif(10)
+var2<-runif(10)
+qplot(x=var1, y=var2)
+```
+
+## Colored bullet points
+>- Collection Mode
+>- \color{gray} Spatial and Temporal
+>- \color{red} Taxonomic Bias
+>- \color{gray} Sampling \color{black}
+>- more
+
+##pulling in images
+ \begin{picture}(320,250)
+ \put(65,20){\includegraphics[height=8cm]{celtic.jpg}}
+ \put(00,50){\begin{minipage}[t]{1\linewidth}
+ \end{minipage}}
+ \end{picture}
+

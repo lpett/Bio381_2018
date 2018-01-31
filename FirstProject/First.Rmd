@@ -2,11 +2,14 @@
 title: "First Markdown Document!"
 author: "Lindsey Pett"
 date: "1/23/2018"
-output: html_document
+output: 
+  html_document: 
+    css: ~/Desktop/github.css
+    keep_md: yes
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## R Markdown
@@ -28,3 +31,36 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## More LaTeX tricks
+
+### Summation
+$$\sum_{i=1}a^S{n_i}=N$$
+
+### Sentence text
+
+$$p(\mbox{Occurrence of species X})=0.67$$
+
+### Escaping the baskslash
+
+$$\backslash a \le b\backslash$$
+
+
+Rendering code of \LaTeX
+
+```{r,echo=TRUE}
+library(ggplot2)
+waterTemp<-runif(50)
+planktonAbundance<-runif(50)
+qplot(x=waterTemp,y=planktonAbundance)
+# print(waterTemp)
+# head(waterTemp)
+```
+
+Now we can add text here, say anything we want, etc. becasue we are no longer in R but back in the world of `markdown`. 
+
+```{r, eval=TRUE,message=FALSE}
+qplot(x=waterTemp)
+```
+
+

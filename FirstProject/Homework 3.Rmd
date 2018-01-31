@@ -1,0 +1,38 @@
+---
+title: "Homework 3"
+author: "Lindsey Pett"
+date: "1/31/2018"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Sakura Shrimp come in all different colors!
+>- \color{red} Red Cherry
+>- \color{blue} Blue Velvet
+>- \color{orange} Orange sakura
+>- \color{green} Emerald sakura
+
+## Why do I love shrimp so much?
+- Clean
+- Active
+- Pretty
+- Colorfull
+
+## Look at those shrimp!
+<center>![shrimp](shrimp)<center>
+shrimp, shrimp, shrimp
+
+## Look at those shrimp!
+\begin{picture}(320,260)
+\put(20,20){\includegraphics[height=9cm]{shrimp}}
+\put(150,110){\begin{minipage}[t]{0.5\linewidth}
+\color{white}{WOW!!!}
+\end{minipage}}
+\end{picture}
+
+
+
+
