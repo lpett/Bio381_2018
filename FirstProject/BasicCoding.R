@@ -168,7 +168,7 @@ myVec<-c(1,2,3)
 rep(myVec,times=2)
 rep(x=myVec,each=2)
 rep(x=myVec,times=myVec)
-rep(x=1:3,times=3:1)
+rep(x=1:5,times=1:5)
 
 # seq for creating sequences 
 seq(from=2,to=4)
@@ -264,3 +264,128 @@ log10(10)
 q<-seq_len(100)
 q[q%%9==0]
 #---------------------------------End of Feb 6 2018
+
+# Realational operators
+# all return a boolean (a true or false values)
+3<4
+3>5:7
+3>=3
+3<=3
+3<=4
+3==4
+3=4 # throws an error
+3!=4
+
+# set operators
+# compare two atomic vectors and return one atomic vector
+# always strip out duplicate elements 
+# before the comparison
+
+i<-c(1,1:7)
+print(i)
+j<-3:10
+print(j)
+
+union(i,j) # all of the elements
+intersect(i,j) # common elements
+setdiff(i,j) # unique elements of i not in j
+setdiff(j,i) # unique elements of j not in i
+
+# set operators that return a single boolean
+setequal(i,j)
+setequal(i,i)
+is.element(i,j) # compare elements in i to j (ORDER DOES NOT MATTER)
+i %in% j #(does the samething as line above)
+
+# logical operators
+z<-10:20 
+z<15
+z<20&z>17 # And operator
+z<20| z>17 # OR operator
+
+
+
+###End of Atomic Vector - must be same type of elements, 1 dimension
+
+### More basic coding tools for matrices and lists 
+## Feb 8 2018 
+library(ggplot2)
+
+# create a matrix from an atomic vector
+# matrix has 2 dimensions, atomic vector and another way to refer to it
+
+m<-matrix(data=1:12,nrow=4) #minimal info needed for matrix
+m
+m<-matrix(data=1:12,nrow=4, byrow = TRUE) #matrix numbers entered by row not by column
+m
+dim(m)
+dim(m)<-c(6,2) # alter dimension
+m
+dim(m)<-c(4,3)
+m
+nrow(m)
+ncol(m)
+length(m)
+
+# add names to rows, columns
+rownames(m)<-c("a","b","c","d")
+m
+colnames(m)<-LETTERS[1:ncol(m)] #ncol lenght of columns
+m
+
+# subsetting matrix values
+print(m[2,3])
+print(m["b","C"])
+print(m[2, ])# must put space for blank to get all columns from second row
+print(m[,2]) # although print out horizontally all rows from second column
+print(m[,])
+print(m[c(1,4),c(1,3)])
+
+rownames(m)<-paste("Species",LETTERS[1:nrow(m)],sep="")
+m
+colnames(m)<-paste("Site",1:ncol(m),sep="")
+m
+
+# add names through the dim command with a list
+dimnames(m)<-list(paste("Site",1:nrow(m),sep=""),paste("Species",ncol(m):1,sep = ""))
+m                  
+t(m) # simply switch rows and columns (transposes function)
+
+# add a row to m with rbind
+m2<-t(m)
+m2
+m2<-rbind(m2,c(10,20,30,40))
+m2
+rownames(m2)
+rownames(m2)[4]<-"Species X"
+m2
+m2["Species X",c("Site3","Site4")]
+
+# can always convert this back to an atomic vector
+myVec<-as.vector(m)
+
+# Lists are vectors but each element 
+# can hold things of different sizes and different types
+
+myList<-list(1:10,matrix(1:8,nrow=4,byrow=TRUE),letters[1:3],pi)
+myList
+str(myList)
+
+# lists dont behave as you think they should
+myList[4]-3 #ERROR
+myList[4]
+str(myList[4])
+myList[[4]]
+
+# combine single and double brackets to access items
+myList[[2]]
+myList[[2]][4,1]
+
+# names list items as we create them
+myList2<-list(Tester=FALSE,littleM=matrix(1:9,nrow=3))
+myList2$littleM[2,3] # get row 2, column 3
+myList2[["Tester"]]
+m
+
+m[1]
+m[4]
