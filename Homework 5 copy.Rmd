@@ -1,0 +1,29 @@
+---
+title: "Homework 5"
+author: "Lindsey Pett"
+date: "2/14/2018"
+output: html_document
+---
+
+1. The primary reason for using Excel to set up data frames is that people like to have the columns aligned. However, if there are not too many columns, it may be faster to do the job in a plain text editor first and align the columns with tabs. In your text editor, type in (or copy and paste from here) the following lines of text:
+    Find `\s{2,}`
+    Replace `,`
+
+2. A True Regex Story. I am preparing a collaborative NSF grant with a colleague at another university. One of the pieces of an NSF grant is a listing of potential conflicts of interest. NSF wants to know the first and last name of the collaborator and their institution.
+    Find `(\w+), (\w+), (.+)`
+    Replace `\2 \1 (\3)`
+
+3. A Second True Regex Story. A few weeks ago, at Radio Bean’s Sunday afternoon old-time music session, one of the mandolin players gave me a DVD with over 1000 historic recordings of old-time fiddle tunes.
+a.All of these files are on a single line, so first write a regular expression to place each file name on its own line:    
+    Find `mp3 `
+    Replace `mp3 \n`
+b.Now write a regular expression to grab the four digit number and put it at the end of the title:
+    Find `(\d+) (.+)[.mp3]{4}`
+    Replace `\2_\1.mp3`
+4.Here is a data frame with genus, species, and two numeric variables.
+a. Write a single regular expression to rearrange the data set like this:
+    Find `(\w)(\w+),(\w+),.+,(\d+)`
+    Replace `\1_\3,\4`
+b. Beginning with the original expression, rearrange it to abbreviate the species name like this:
+    Find `(\w)(\w+),(\w{4})(\w+),.+,(\d+)`
+    Replace `\1_\3,\5`

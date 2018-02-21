@@ -1,0 +1,156 @@
+---
+title: "Homework 6"
+author: "Lindsey Pett"
+date: "2/21/2018"
+output: html_document
+---
+```{r}
+z <- read.table("MyDataFile.csv",header=TRUE,sep=",", stringsAsFactors=FALSE)
+str(z)
+summary(z)
+```
+
+```{r}
+library(ggplot2) # for graphics
+library(MASS) # for maximum likelihood estimation
+```
+
+```{r}
+# quick and dirty, a truncated normal distribution to work on the solution set
+
+#z <- rnorm(n=3000,mean=0.2)
+#z <- data.frame(1:3000,z)
+#names(z) <- list("ID","myVar")
+#z <- z[z$myVar>0,]
+#str(z)
+```
+
+```{r}
+p1 <- ggplot(data=z, aes(x=z$Mass, y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) 
+print(p1)
+```
+
+```{r}
+p1 <-  p1 +  geom_density(linetype="dotted",size=0.75)
+print(p1)
+```
+
+```{r}
+normPars <- fitdistr(z$Mass,"normal")
+print(normPars)
+```
+
+```{r}
+str(normPars)
+```
+
+```{r}
+normPars$estimate["mean"] # note structure of getting a named attribute
+```
+
+```{r}
+meanML <- normPars$estimate["mean"]
+sdML <- normPars$estimate["sd"]
+
+xval <- seq(0,max(z$Mass),len=length(z$Mass))
+
+ stat <- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour="red", n = length(z$Mass), args = list(mean = meanML, sd = sdML))
+ p1 + stat
+```
+
+```{r}
+expoPars <- fitdistr(z$Mass,"exponential")
+rateML <- expoPars$estimate["rate"]
+
+stat2 <- stat_function(aes(x = xval, y = ..y..), fun = dexp, colour="blue", n = length(z$Mass), args = list(rate=rateML))
+ p1 + stat + stat2
+```
+
+```{r}
+stat3 <- stat_function(aes(x = xval, y = ..y..), fun = dunif, colour="darkgreen", n = length(z$Mass), args = list(min=min(z$Mass), max=max(z$Mass)))
+ p1 + stat + stat2 + stat3
+```
+
+```{r}
+z2 <- z[z$Mass>0,]
+gammaPars <- fitdistr(z2$Mass,"gamma")
+shapeML <- gammaPars$estimate["shape"]
+rateML <- gammaPars$estimate["rate"]
+
+stat4 <- stat_function(aes(x = xval, y = ..y..), fun = dgamma, colour="brown", n = length(z$myVar), args = list(shape=shapeML, rate=rateML))
+ p1 + stat + stat2 + stat3 + stat4
+```
+
+```{r}
+pSpecial <- ggplot(data=z, aes(x=Mass/(max(Mass + 0.1)), y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) + 
+  xlim(c(0,1)) +
+  geom_density(size=0.75,linetype="dotted")
+
+betaPars <- fitdistr(x=z2$Mass/max(z2$Mass + 0.1),start=list(shape1=1,shape2=2),"beta")
+shape1ML <- betaPars$estimate["shape1"]
+shape2ML <- betaPars$estimate["shape2"]
+
+statSpecial <- stat_function(aes(x = xval, y = ..y..), fun = dbeta, colour="orchid", n = length(z2$Mass), args = list(shape1=shape1ML,shape2=shape2ML))
+pSpecial + statSpecial
+```
+```{r}
+# comparing long likelihoods
+normPars$loglik
+gammaPars$loglik
+expoPars$loglik
+#NORMAL IS THE BEST!!!!
+```
+
+5. Normal Distribution & Simulated Data
+```{r}
+x <- rnorm(n=40,mean=82.040519,sd=123.420460)
+x <- data.frame(1:40,x)
+names(x) <- list("Site","Mass")
+x <- x[x$Mass>0,]
+str(x)
+
+```
+Plot histogram
+```{r}
+p1 <- ggplot(data=x, aes(x=Mass, y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) 
+print(p1)
+```
+Plot & Probability Curve
+```{r}
+meanML <- normPars$estimate["mean"]
+sdML <- normPars$estimate["sd"]
+
+xval <- seq(0,max(x$Mass),len=length(x$Mass))
+
+ stat <- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour="red", n = length(x$Mass), args = list(mean = meanML, sd = sdML))
+ p1 + stat
+ 
+```
+
+Original Data
+```{r}
+z <- read.table("MyDataFile.csv",header=TRUE,sep=",", stringsAsFactors=FALSE)
+str(z)
+summary(z)
+p1 <- ggplot(data=z, aes(x=z$Mass, y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) 
+
+normPars <- fitdistr(z$Mass,"normal")
+str(normPars)
+normPars$estimate["mean"]
+meanML <- normPars$estimate["mean"]
+sdML <- normPars$estimate["sd"]
+
+xval <- seq(0,max(z$Mass),len=length(z$Mass))
+
+ stat <- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour="red", n = length(z$Mass), args = list(mean = meanML, sd = sdML))
+ p1 + stat
+
+ 
+```
+
+How do they compare?
+The simulated data almost seem to be more uniform in distribution, with more values towards the mean.  The most likely reason as to why the simulated data does not look similar to the actual data is the small sample size.

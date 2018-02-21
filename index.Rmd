@@ -72,6 +72,8 @@ No solution
 ------
 <div id='id-section6'/>   
 ### Week 6: 
+[Homework 6](Homework_6.html)
+
 
 ------
 <div id='id-section7'/>

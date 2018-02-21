@@ -1,0 +1,50 @@
+Feb 13, 2018
+
+Computational Biology
+
+Regular Expressions - are find and replace on steroids
+
+# Use of literal searches
+
+- "escape" a metacharcter with a slash
+
+## Wildcards
+
+- any character or space other than an end-of-line
+
+- `\w` a single word character (letter, number, or an _)
+- `\d` is a single number character
+- `\t` a single tab space
+- `\s` a single space, tab, or line break
+- `\n` a single line break (or `\r`)
+
+## Quantifiers
+- `\w+` one or more consecturive word characters
+- `\w*` zero or more consecturive word characters
+- `\w{3}` exactly 3 consecutive characters
+- `\w{3,}` find 3 or more consecutive word characters
+- `\w{3,5}` find 3,4,5 or more consecutive word characters
+
+### Using a zero or more* quantifier
+
+#### Using `.*` for "all the rest" in a line
+
+#### Use () to "capture elements of the text for replacement
+
+#### Specify consecutive capture elements with `\1,\2,` etc in the prelacement string
+
+#### in replacement string, mix captured text with literal text
+
+#### Dealing with genus and spcies names
+
+#### Create custom character sets
+
+`\[A,C,T,G] Find a sequence of nucleotides
+`\[A,C,T,G]+`Find a string that is NOT a sequence
+
+#### R package`stringr()`
+
+  ​
+
+
+

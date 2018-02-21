@@ -389,3 +389,12 @@ m
 
 m[1]
 m[4]
+##------------------End-----------
+
+#Feb 13 2018
+#Regular Expressions - are find and replace on steroids
+# on bbedit & typora
+
+
+
+
