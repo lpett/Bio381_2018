@@ -189,3 +189,6 @@ Histo(zNew)
 summary(x)
 z<-runif(n=1000,min=85,max=100)
 Histo(z)
+
+#-----------------------------#
+

@@ -1,0 +1,97 @@
+---
+title: "Homework 7"
+output: html_notebook
+---
+Creating Fake Data Sets To Explore Hypotheses
+Go back to your “thinking on paper” exercise, and decide on a pattern that you might expect in your experiment if a specific hypothesis were true.
+
+To start simply, assume that the data in each of your treatment groups follow a normal distribution. Specify the sample sizes, means, and variances for each group that would be reasonable if your hypothesis were true.
+
+Using the methods we have covered in class, write a simple function to create a random data set that has these attributes. Organize these data into a data frame with the appropriate structure.
+
+Now write a simple function to analyze the data (probably as an ANOVA or regression analysis, but possibly as a logistic regression or contingency table analysis. Write anothe function to generate a useful graph of the data.
+
+Try running your analysis multiple times to get a feeling for how variable the results are with the same parameters, but different sets of random numbers.
+
+Now begin adjusting the means of the different groups. Given the sample sizes you have chosen, how small can the differences between the groups be (the “effect size”) for you to still detect a significant pattern (p < 0.05).
+
+Alternatively, for the effect sizes you originally hypothesized, what is the minimum sample size you would need in order to detect a statistically significant effect. Again, run the model a few times with the same parameter set to get a feeling for the effect of random variation in the data.
+
+Write up your results in a markdown file. Be explicit in your explanation and justification for sample sizes, means, and variances.
+
+If you have time, try repeating this exercise with one of the more sophisticated distributions, such as the gamma or negative binomial (depending on the kind of data you have). You will have to spend some time figuring out by trial and error the parameter values you will need to generate appropriate means and variances of the different groups.
+
+
+
+Function to create data
+```{r}
+dataCreated<- function(mean1=100,mean2=80,n1=40,n2=40,sd1=43,sd2=38){
+  mydf <- data.frame(control=rnorm(mean = mean1, n=n1, sd=sd1), test=rnorm(mean=mean2, n=n2, sd=sd2))
+  return(mydf)
+}
+myDF <-dataCreated(mean1=100)
+head(myDF)
+```
+Function for ANOVA
+```{r}
+library(reshape2)
+myDF2 <- melt(myDF)
+ANOVA <- function(data=myDF2){
+  myANOVA <- aov(value~variable, data=data)
+  summary(myANOVA)
+}
+ANOVA(data=myDF2)
+ANOVA()
+myANOVA <- aov(value~variable, data=myDF2)
+summary(myANOVA)
+```
+
+Box Plot
+```{r}
+library(ggplot2)
+ANOVAPlot <- function(data=myDF2){
+  ggplot(data=data,aes(x=variable, y=value, fill=variable)) + geom_boxplot()
+}
+ANOVAPlot()
+```
+
+ANOVA (Increase second mean)
+```{r}
+dataCreated<- function(mean1=100,mean2=200,n1=40,n2=40,sd1=43,sd2=38){
+  mydf <- data.frame(control=rnorm(mean = mean1, n=n1, sd=sd1), test=rnorm(mean=mean2, n=n2, sd=sd2))
+  return(mydf)
+}
+myDF <-dataCreated(mean1=100)
+head(myDF)
+myDF2 <- melt(myDF)
+ANOVA <- function(data=myDF2){
+  myANOVA <- aov(value~variable, data=data)
+  summary(myANOVA)
+}
+ANOVA(data=myDF2)
+ANOVA()
+myANOVA <- aov(value~variable, data=myDF2)
+summary(myANOVA)
+```
+
+
+ANOVA (Change sample size)
+```{r}
+dataCreated<- function(mean1=100,mean2=80,n1=25,n2=25,sd1=43,sd2=38){
+  mydf <- data.frame(control=rnorm(mean = mean1, n=n1, sd=sd1), test=rnorm(mean=mean2, n=n2, sd=sd2))
+  return(mydf)
+}
+myDF <-dataCreated(mean1=100)
+head(myDF)
+myDF2 <- melt(myDF)
+ANOVA <- function(data=myDF2){
+  myANOVA <- aov(value~variable, data=data)
+  summary(myANOVA)
+}
+ANOVA(data=myDF2)
+ANOVA()
+myANOVA <- aov(value~variable, data=myDF2)
+summary(myANOVA)
+```
+
+The original data generated had means of 100 and 80 with both the control and tretatement having an n=40, and the standard deviation was 43 and 38.  The original data produced a marginally significant result with a p value of 0.066.  When increasing the second mean value from its original 80 to 200, with the other parameters staying the same it created a significant p value.  With an increase in the mean value of the treatment from 80 to 200 the p value was found to be 2<e-16.  Decreasing both n values for both the control and treatment casued the p value to become insignificant.  When n=25, the p value was then found to be 0.199.  Showing that both the mean and sample size influence the pvalue.    
