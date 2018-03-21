@@ -93,9 +93,22 @@ fitLInear<-funciton(x=runif(20),y=runif(20)){
   myMod<-lm(y~x) # fits model 
   myOut<-c(slope=summary(myMod)$coefficients[2,1],
            pVal=summary(myMod$coefficients[2,4])
-  qplot(x=x,y=y)
+  plotVar<-qplot(x=x,y=y,geom=c("smooth","point"))
   print(plotVar)
   return(myOut)
 }
+library(ggplot2)
 fitLinear()
+
+
+#######-----------------------------------------------------#####
+# March 3 2018
+
+# dealing with too many parameters by bundling them up
+z<-c(runif(99),NA)
+mean(z) # need to account for NA
+mean(x=z,na.rm=TRUE)
+mean(x=z,na.rm=TRUE,trim=0.05)
+l<-list(x=z,na.rm=TRUE,trim=0.05)
+do.call(mean,l)
 

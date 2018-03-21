@@ -77,21 +77,14 @@ No solution
 
 ------
 <div id='id-section7'/>
-### Week 7: 
-[Homework 7](Homework_7.nb.html) 
+### Week 7/8: 
+[Homework 7/8](Homework_7.nb.html) 
 
-
-------
-<div id='id-section8'/>
-### Week 8:  
-
- 
-   
 
 ------
 <div id='id-section9'/>
 ### Week 9: 
-
+[Homework 9](Homework_9.html)
  
 
 ------

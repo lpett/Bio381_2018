@@ -1,0 +1,66 @@
+---
+title: "Homework 8"
+author: "Lindsey Pett"
+date: "3/21/2018"
+output: html_document
+---
+```{r}
+# library
+library(reshape2)
+library(ggplot2)
+#Plreliminary Calls
+u <- 100
+v <- 80
+w <- 40
+x <- 40
+y <- 43
+z <- 38
+#Function to Create Data
+dataCreated<- function(mean1=u,mean2=v,n1=w,n2=x,sd1=y,sd2=z){
+  mydf <- data.frame(control=rnorm(mean = mean1, n=n1, sd=sd1), test=rnorm(mean=mean2, n=n2, sd=sd2))
+  return(mydf)
+}
+myDF <-dataCreated(mean1=u)
+head(myDF)
+#Funciton for ANOVA
+myDF2 <- melt(myDF)
+ANOVA <- function(data=myDF2){
+  myANOVA <- aov(value~variable, data=data)
+  summary(myANOVA)
+}
+ANOVA(data=myDF2)
+ANOVA()
+myANOVA <- aov(value~variable, data=myDF2)
+summary(myANOVA)
+#Function for Box Plot
+ANOVAPlot <- function(data=myDF2){
+  ggplot(data=data,aes(x=variable, y=value, fill=variable)) + geom_boxplot()
+}
+ANOVAPlot()
+
+
+
+
+
+# 2 # Modify new output grpah
+tester <- myDF2 
+new <- ifelse(tester > 0.05, rnorm(n=w:x, mean=u:v, sd=y:z),0)
+hist(new)
+
+# 3 for loop
+myDat<-rnorm<-function(mean1=u,mean2=v,n1=w,n2=x,sd1=y,sd2=z){
+  mydf <- data.frame(control=rnorm(mean = mean1, n=n1, sd=sd1), test=rnorm(mean=mean2, n=n2, sd=sd2))
+  return(mydf)
+  digits=2
+}
+a=1:10
+for (i in 10){
+  cat("loop number =",i,"vector element = ", myDat[i],"\n")
+}
+```
+
+
+
+
+
+
