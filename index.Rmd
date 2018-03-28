@@ -90,7 +90,7 @@ No solution
 ------
 <div id='id-section10'/>
 ### Week 10:    
-
+[Homework 10](Homework_10.html) 
 
 ------
 <div id='id-section11'/>
