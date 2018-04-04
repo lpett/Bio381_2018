@@ -61,19 +61,20 @@ write.table(x=dF,
 # input: 2-column data frame
 # output: slope, p-value and r2
 #--------------------------------------------
-regStats <-function(d=NULL){
-  if(is.null(d)){
+regStats <- function(d=NULL) {
+  if(is.null(d)) {
     xVar <- runif(10)
     yVar <- runif(10)
     d <- data.frame(xVar,yVar)
   }
-. <- lm(data=d,d[,2]~d[,1])
-. <- summary(.)
-statsList<-list(Slope=.$coefficients[2,1],
-                pVal=.$coefficinets[2,4],
-                r2=.$r.squared)
-return(statsList)
-} 
+  . <- lm(data=d,d[,2]~d[,1])
+  . <- summary(.)
+  statsList <- list(Slope=.$coefficients[2,1],
+                    pVal=.$coefficients[2,4],
+                    r2=.$r.squared)
+  return(statsList)
+  
+}
 regStats()
 
 #---------------------------------------------------
@@ -109,7 +110,7 @@ for (i in seq_along(fileNames)){
   dClean<-data[complete.cases(data),] # get clean cases
   
   . <- regStats(dClean) # pull regression stats from clean file
-  statsOut[i,3:4]<-unlist(.) #unlist, copy intor last 3 columns
+  statsOut[i,3:5]<-unlist(.) #unlist, copy intor last 3 columns
 }
 
 # set up output file and incorporate time stamp and minimal metadata
@@ -126,4 +127,8 @@ write.table(cat("# Summary stats for",
 
 # now add the data frame
 write.table(x=statsOut,
-            
+            file=fileOut,
+            row.names=FALSE,
+            col.names=TRUE,
+            sep=",",
+            append=TRUE)            
