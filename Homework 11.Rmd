@@ -45,7 +45,7 @@ myData<-read.csv(file="hw11.csv")
 #preliminaries
 library(ggplot2)
 library(TeachingDemos)
-char2seed("May Flowerx")
+char2seed("May Flowers")
  
 ########################################################
 # FUNCTION: readData

@@ -96,3 +96,8 @@ No solution
 <div id='id-section11'/>
 ### Week 11: 
 [Homework 11](Homework_11.html) 
+
+------
+<div id='id-section12'/>
+### Week 12: 
+[Homework 12](Homework_12.html) 

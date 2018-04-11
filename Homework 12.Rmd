@@ -1,0 +1,62 @@
+---
+title: "Homework 12"
+author: "Lindsey Pett"
+date: "4/11/2018"
+output: html_document
+---
+
+
+```{r,warning=FALSE}
+# read in CSV
+d<-read.csv(file="hw12data.csv")
+library(ggplot2)
+library(ggthemes)
+library(patchwork)
+library(TeachingDemos)
+char2seed("Biomass")
+```
+
+```{r,warning=FALSE}
+g1 <- ggplot(data=d, mapping=aes(x=FG,y=AGB)) + 
+  geom_point() + 
+  geom_smooth()
+print(g1)
+```
+
+```{r,warning=FALSE}
+g2 <- ggplot(data=d,
+             mapping=aes(x=FG,fill=I("pink"),color=I("purple"))) + 
+             geom_bar(stat="count") + 
+             theme(legend.position="none")
+print(g2)
+```
+
+```{r,warning=FALSE}
+g3 <- ggplot(data=d,
+             mapping=aes(x=RSA,fill=I("orange"),color=I("black"))) + 
+  geom_histogram()
+ print(g3)
+```
+
+```{r,warning=FALSE}
+  g4 <- ggplot(data=d, 
+               mapping=aes(x=Comp,y=BGB,fill=BGB)) + 
+    geom_boxplot() + 
+    geom_jitter()+
+             theme(legend.position="none")
+  
+  print(g4)
+```
+
+```{r,warning=FALSE}
+g4 + {
+    g2 + {
+      g3 +
+        g1 +
+        plot_layout(ncol=1)
+    }
+  } +
+    plot_layout(ncol=1)
+
+```
+

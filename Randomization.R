@@ -30,3 +30,166 @@ RanWalk <- function(times=100,n1=50,lambda=1.00,noiseSD=10) {
 # explore paramaters in plot function
 plot(RanWalk(),type="o")
 plot(RanWalk(lambda=1.00,noiseSD=0),type="o")
+
+### Using Random For LOOPs ###
+
+m <- matrix(round(runif(20),digits=3),nrow=5)
+# loop over rows
+for (i in 1:nrow(m)) {
+  m[i,] <- m[i,] + i
+} 
+print(m)
+
+# Loop over columns
+m <- matrix(round(runif(20),digits=3),nrow=5)
+for (j in 1:ncol(m)) {
+  m[,j] <- m[,j] + j
+}
+print(m)
+
+# Loop over rows and columns
+m <- matrix(round(runif(20),digits=3),nrow=5)
+for (i in 1:nrow(m)) {
+  for (j in 1:ncol(m)) {
+    m[i,j] <- m[i,j] + i + j
+  } # end of column j loop
+} # end or row i loop
+print(m) 
+
+
+###Writing functions for equations and sweeping over parameters
+# S = cA^z species area function, but what does it look like??
+
+##################################################
+# function: SpeciesAreaCurve
+# creates power function relationship for S and A
+# input: A is a vector of island areas
+#        c is the intercept constant
+#        z is the slope constant
+# output: S is a vector of species richness values
+#------------------------------------------------- 
+SpeciesAreaCurve <- function(A=1:5000,c= 0.5,z=0.26){
+  
+  S <- c*(A^z)
+  return(S)
+}
+head(SpeciesAreaCurve())
+
+##################################################
+# function: SpeciesAreaPlot
+# plot species area curves with parameter values
+# input: A = vector of areas
+#        c = single value for c parameter
+#        z = single value for z parameter
+
+# output: smoothed curve with parameters in graph
+#------------------------------------------------- 
+SpeciesAreaPlot <- function(A=1:5000,c= 0.5,z=0.26) {
+  plot(x=A,y=SpeciesAreaCurve(A,c,z),type="l",xlab="Island Area",ylab="S",ylim=c(0,1000))
+  mtext(paste("c =", c,"  z =",z),cex=0.7) 
+  return()
+}
+SpeciesAreaPlot()
+
+
+### now building a grid of plots
+# global variables
+cPars <- c(100,150,175)
+zPars <- c(0.10, 0.16, 0.26, 0.3)
+par(mfrow=c(3,4))
+for (i in seq_along(cPars)) {
+  for (j in seq_along(zPars)) {
+    SpeciesAreaPlot(c=cPars[i],z=zPars[j])
+  }
+} 
+
+
+## Looping with while or repeat
+# looping with for
+cutPoint <- 0.1
+z <- NA
+ranData <- runif(100)
+for (i in seq_along(ranData)) {
+  z <- ranData[i]
+  if (z < cutPoint) break
+}
+print(z)
+
+# looping with while
+
+z <- NA
+cycleNumber <- 0
+while (is.na(z) | z >= cutPoint) {
+  z <- runif(1)
+  cycleNumber <- cycleNumber + 1
+  
+}
+print(z)
+print(cycleNumber)
+
+# looping with repeat
+
+z <- NA
+cycleNumber <- 0
+
+repeat {
+  z <- runif(1)
+  cycleNumber <- cycleNumber + 1
+  
+  if (z <= cutPoint) break
+}
+print(z)
+print(cycleNumber)
+
+# add code for cycle number
+# try setting limit to 0.001
+
+#### USing the expand.grid()function to create a dataframe with parameter combinations
+expand.grid(cPars,zPars)
+
+##################################################
+# function: SA_Output
+# Summary stats for species-area power function
+# input: vector of predicted species richness 
+# output: list of max-min, coefficient of variation 
+#------------------------------------------------- 
+SA_Output <- function(S=runif(1:10)) {
+  
+  sumStats <- list(SGain=max(S)-min(S),SCV=sd(S)/mean(S))
+  
+  return(sumStats)
+}
+SA_Output()
+
+
+# Build program body with a single loop through 
+# the parameters in modelFrame
+
+# Global variables
+Area <- 1:5000
+cPars <- c(100,150,175)
+zPars <- c(0.10, 0.16, 0.26, 0.3)
+
+# set up model frame
+modelFrame <- expand.grid(c=cPars,z=zPars)
+modelFrame$SGain <- NA
+modelFrame$SCV <- NA
+print(modelFrame)
+
+# cycle through model calculations
+for (i in 1:nrow(modelFrame)) {
+  
+  # generate S vector
+  temp1 <- SpeciesAreaCurve(A=Area,
+                            c=modelFrame[i,1],
+                            z=modelFrame[i,2])
+  # calculate output stats
+  temp2 <- SA_Output(temp1)
+  # pass results to columns in data frame
+  modelFrame[i,c(3,4)] <- temp2
+  
+}
+print(modelFrame)
+
+# use cex expansion to show a third variable with symbol size
+plot(x=modelFrame$c,y=modelFrame$SGain,cex=10*modelFrame$z)
