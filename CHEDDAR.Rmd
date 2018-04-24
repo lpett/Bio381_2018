@@ -1,0 +1,45 @@
+---
+title: "CHEDDAR"
+author: "Lindsey Pett"
+date: "4/18/2018"
+output: html_document
+---
+
+Importing community data
+```{r}
+# install.packages(cheddar)
+library(cheddar)
+# load data
+data(TL84)
+# lets take a peak at nodes.csv
+head(TL84$nodes)
+# lets take a peak at properties.csv
+head(TL84$properties)
+# lets take a peak at trophic.links.csv
+head(TL84$trophic.links)
+```
+
+
+Trophic Interaction Food Web
+  Producers = green circles
+  Invertebrates = blue squares
+  Vertebrate ectotherms = purple diamonds
+  cannibals = ligher green circles and trophic links shown by grey lines
+```{r}
+data(TL84)
+    # The predation matrix
+    PlotPredationMatrix(TL84)
+    # The predation matrix with rows ordered by body mass
+    PlotPredationMatrix(TL84, resource.order='M')
+    # Colours and symbols by resource.category
+    PlotMCvMR(TL84)
+    # Colours and symbols by consumer.category
+    PlotMCvMR(TL84, bg.by='consumer.category', symbol.by='consumer.category',
+              colour.by='consumer.category')
+    # Consumer trophic height against resource log10(M)
+    PlotTLPS(TL84, 'resource.Log10M', 'consumer.TrophicHeight')
+    # Log10(M of resource / M of consumer) against consumer log10(M)
+    PlotTLPS(TL84, 'consumer.Log10M', 'Log10RCMRatio')
+
+```
+

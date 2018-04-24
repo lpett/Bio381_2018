@@ -154,3 +154,9 @@ m1+facet_grid(.~class)
 m1<-ggplot(data=mpg,mapping=aes(x=displ,y=cty)))+
  geom_boxplot()
 m1+facet_grid(.~class)
+#-------------------------------------------------------------#
+m1<-ggplot(data=mpg,mapping=aes(x=displ,y=cty,group=drv,fill=drv))+
+  geom_boxplot()
+m1+facet_grid(.~class)
+
+

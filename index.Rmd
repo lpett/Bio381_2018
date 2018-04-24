@@ -101,3 +101,8 @@ No solution
 <div id='id-section12'/>
 ### Week 12: 
 [Homework 12](Homework_12.html) 
+
+------
+<div id='id-RPackage'/>
+### Week 12: 
+[RPackageCheddar](RPackage_Cheddar.html) 
