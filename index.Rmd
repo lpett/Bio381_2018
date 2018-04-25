@@ -104,5 +104,6 @@ No solution
 
 ------
 <div id='id-RPackage'/>
-### Week 12: 
-[RPackageCheddar](RPackage_Cheddar.html) 
+### Week 13: 
+[RPackageCheddar](RPackage_Cheddar.html)
+[RPackageCheddarRMD](RPackage_Cheddar.Rmd) 
